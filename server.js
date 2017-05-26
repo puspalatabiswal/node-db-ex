@@ -42,6 +42,31 @@ router.post("/employee1" , function(req,res){
 	})
 })
 
+//edit the data
+router.put("/employee/:id",function(req,res){
+	var userId = req.params.id;
+		var employeeObj = req.body;
+Employee.editEmployee(userId,employeeObj,function(err , empData){
+	if(err){
+		throw err;
+	}
+	res.json(empData);
+})
+})
+
+//delete the data
+
+router.delete("/employee2/:id" , function(req,res){
+var userId = req.params.id;
+Employee.deleteEmployee(userId,function(err , empoData){
+if(err){
+	throw err;
+}
+res.json(empoData);
+
+
+})
+})
 
 
 app.use("/api" , router);
